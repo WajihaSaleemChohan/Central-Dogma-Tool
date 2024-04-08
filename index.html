@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Transcription Tool</title>
+</head>
+  
+<body>
+  <header>
+    PAF-IAST Bioinformatic Tools
+  </header>
+  <nav>
+  
+  </nav>
+  <div class="container">
+    
+    <h1>Transcription</h1>
+     <link rel="stylesheet" type="text/css" href="style.css">
+    <label for="dna-input">Enter DNA Sequence:</label>
+    <textarea id="dnaInput" placeholder="Enter DNA sequence"></textarea>
+    <button onclick="transcribe()">Transcribe Sequence</button>
+    <br>
+    <label for="dna-input">RNA Sequence:</label>
+    <textarea id="rnaOutput" placeholder="RNA sequence" ></textarea>
+    <br>
+  </div>
+ <script src="script.js"></script>
+
+  <h1> Translation </h1>
+  
+  <link rel="stylesheet" type="text/css" href="style.css">
+   <label for="rna-input">Enter RNA Sequence:</label>
+  <textarea id="rnaInput" placeholder="Enter RNA sequence..." rows="4" cols="50"></textarea>
+  <br>
+  <button onclick="translateRNA()">Translate Sequence</button>
+  <br>
+  <label for="protein-output">Protein Sequence:</label>
+  <textarea id="proteinOutput" placeholder="Protein sequence..." rows="4" cols="50" readonly></textarea>
+  <br>
+  <button onclick="copyToClipboard()">Copy Sequence </button>
+</body>
+</html>
+
+
+  <br>
+
+<head>
+  <title>Amino Acid Table</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+  </style>
+  
+
+<body>
+  <h1>Protein to Amino Acid Name Conversion</h1>
+  
+  <div class="container">
+    <div class="input-container">
+      <label for="protein-input">Protein Sequence:</label>
+      <textarea id="protein-input" placeholder="Enter protein sequence"></textarea>
+    </div>
+    <button onclick="convertToAminoAcid()">Convert To Amino Acids</button>
+    
+    <div class="output-container">
+      <label for="aminoacid-output">Amino Acid Names:</label>
+      <textarea id="aminoacid-output" placeholder="Amino acid names" readonly></textarea>
+    
+    </div>
+  </div>
+
+  <script>
+    function convertToAminoAcid() {
+      var proteinInput = document.getElementById("protein-input").value.toUpperCase();
+      var aminoAcidOutput = document.getElementById("aminoacid-output");
+
+      // Conversion map for protein to amino acid names
+      var conversionMap = {
+        A: "Alanine",
+        R: "Arginine",
+        N: "Asparagine",
+        D: "Aspartic Acid",
+        C: "Cysteine",
+        Q: "Glutamine",
+        E: "Glutamic Acid",
+        G: "Glycine",
+        H: "Histidine",
+        I: "Isoleucine",
+        L: "Leucine",
+        K: "Lysine",
+        M: "Methionine",
+        F: "Phenylalanine",
+        P: "Proline",
+        S: "Serine",
+        T: "Threonine",
+        W: "Tryptophan",
+        Y: "Tyrosine",
+        V: "Valine",
+        "*": "Stop"
+      };
+
+      var aminoAcidNames = "";
+
+      // Convert each protein amino acid to its name
+      for (var i = 0; i < proteinInput.length; i++) {
+        var aminoAcid = proteinInput[i];
+        if (conversionMap.hasOwnProperty(aminoAcid)) {
+          aminoAcidNames += conversionMap[aminoAcid] + " ";
+        } else {
+          aminoAcidNames += "Unknown ";
+        }
+      }
+
+      aminoAcidOutput.value = aminoAcidNames.trim();
+    }
+
+  </script>
+</body>
+  <section>
+    <footer>
+    <p>&copy; 2023 PAF-IAST BI Tools. All rights reserved. | Designed by Wajiha Saleem Chohan</p>
+  </footer>
+  </section>
+  
+</body>
+</html>
